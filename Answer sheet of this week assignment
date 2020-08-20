@@ -1,0 +1,96 @@
+Answer 1: between -1 and 1
+
+Answer 2: Ridge Regularisation
+
+Answer 3: Hyperplane
+
+Answer 4: logistic Regression
+
+Answer 5: (2.205 * old coefficient of 'X' )
+
+Anser 6: Decreases
+
+Answer 7:Random Forest are easy to interpret.
+
+Answer 8: a) Principal components are calculated using unsupervised learning techniques.
+          b) Principal components are linear combinations of Linear variables.
+          
+Answer 9: a) Identifying developed , developing and under developed countries on the basis of factors like GDP, poverty index,
+             employment rate , population and living index.
+          b) Identifying different segments of disease based on BMI , blood pressure ,cholestrol, blood sugar levels.
+          
+Answer 10: a) max_depth
+           b) min_samples_leaf
+           
+Answer 11: An outlier is a unexpected data point or a value which have statisticaly different value than a normal values in a dataset, in                other words  it is a value different from all value may be it is much higher or a much lower value as compare to other values in a            dataset.
+
+           Interquartile range is a subtraction of 75% percentile and 25% percentile (IQR= Q3 - Q1).
+           Method for finding outliers :
+            First we calculate IOR 
+            then multiply 1.5 thrers value to IQR
+            then subtract the value with q1 to find low fence
+            and add the value with q3 to find high fence
+            and then compare the value with  dataset values.
+    
+   For Example:-
+    def remove_outlier(df_in, col_name, thres=1.5):
+    q1 = df_in[col_name].quantile(0.25)
+    q3 = df_in[col_name].quantile(0.75)
+    iqr = q3-q1 #Interquartile range
+    fence_low  = q1-thres*iqr
+    fence_high = q3+thres*iqr
+    mask = (df_in[col_name] > fence_high) | (df_in[col_name] < fence_low)
+    df_in.loc[mask, col_name] = np.nan
+    return df_in
+    
+Answer 12: Bagging and Boosting are two types of Ensemble Learning.
+            
+          Bagging:-Simplest way of combining predictions that belong to the same type.
+                   Aim to decrease variance, not bias.
+                   Each model receives equal weight.
+                   Each model is built independently.
+                   If the classifier is unstable (high variance), then apply bagging.
+                   
+          Boosting:-A way of combining predictions that belong to the different types.
+                    Aim to decrease bias, not variance.
+                    Models are weighted according to their performance.
+                    New models are influenced by performance of previously built models.
+                    If the classifier is stable and simple (high bias) the apply boosting.
+                    
+Answer 13: R square in logistic regression is introduced by McFadden which maximize the likelyhood of the data which has been observed.
+            Formula : R2 = 1-(log(Lc)/log(Lnull)
+           where Lc denotes the (maximized) likelihood value from the current fitted model, and Lnull denotes the corresponding                        value.
+           
+Answer 14: NORMALIZATION: It basically means to rescale the values of dataset between the range 0 and 1.
+                          
+                          Normalization seems to refer to the dividing of a vector by its length.
+                                      
+                                      Xnew =X-Xmin/Xmax - Xmin
+                          
+           STANDARDIZATION: It basically means to rescale the data between the mean of 0 and the standard deviation of 1.
+           
+                            Standardization seems to refer to the subtraction of a mean then dividing by its SD.
+                                       
+                                      Xnew=X-μ/σ
+                                      
+Answer 15:-Cross validation is a technique used for remove underfitting and overfitting .
+           Cross-validation is a technique in which we train our model using the subset of the data-set and then evaluate using the                    complementary subset of the data-set.
+            1) Reserve some portion of sample data-set.
+            2) Using the rest data-set train the model.
+            3) Test the model using the reserve portion of the data-set.
+            
+           It uses k numbers of fold by which the datset is divided and by these division whole datset goes in training and testing phase by            which it doest not overfit and underfit.The flow  is explained  below:-
+                            
+                            
+                   Total instances: 25
+                   Value of k     : 5 
+
+               No. Iteration              Training set observations                     Testing set observations
+               1      [ 5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24]   [0 1 2 3 4]
+               2      [ 0  1  2  3  4 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24]   [5 6 7 8 9]
+               3      [ 0  1  2  3  4  5  6  7  8  9 15 16 17 18 19 20 21 22 23 24]   [10 11 12 13 14]
+               4      [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 20 21 22 23 24]   [15 16 17 18 19]
+               5      [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19]   [20 21 22 23 24]
+
+    
+    
